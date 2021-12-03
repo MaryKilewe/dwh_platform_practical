@@ -115,7 +115,7 @@ function postData_to_age_filter(filters){
             //document.getElementById("age_title").remove();
             //document.getElementById("ageChartContainer").remove();
             $( "#age_stats" ).empty();
-            title = $('<h5 class="heading mb-sm-5 mb-4" id="age_title">Age dsdffsd <strong>Stats </strong></h5>' );
+            title = $('<h5 class="heading mb-sm-5 mb-4" id="age_title">Age <strong>Stats </strong></h5>' );
             filteredagePieChartContainer = $('<canvas id="ageChartContainer" style="height: 300px; width: 300px;"></canvas>' );
             $('#age_stats').append(title);
             $('#age_stats').append(filteredagePieChartContainer);
