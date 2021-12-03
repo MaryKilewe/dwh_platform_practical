@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1> {{facility}} submissions</h1>
+        <table class="table" id="submissions">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Age</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Facility</th>
+                <th scope="col">County</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in summary %}
+                <tr>
+                    <th scope="row">{{ data['number'] }}</th>
+                    <td>{{ data['first'] }}</td>
+                    <td>{{ data['last'] }}</td>
+                    <td>{{ data['age'] }}</td>
+                    <td>{{ data['gender'] }}</td>
+                    <td>{{ data['facility'][0:40] }}</td>
+                    <td>{{ data['county'] }}</td>
+                    <td>{{ data['reg_date'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

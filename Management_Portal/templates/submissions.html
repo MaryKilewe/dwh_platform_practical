@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1> All submissions</h1>
+
+
+
+    <table class="table" id="submissions">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Age</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Facility</th>
+                <th scope="col">County</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in submissions %}
+                <tr>
+                    <th scope="row">{{ data['number'] }}</th>
+                    <td>{{ data['first'] }}</td>
+                    <td>{{ data['last'] }}</td>
+                    <td>{{ data['age'] }}</td>
+                    <td>{{ data['gender'] }}</td>
+                    <td><a href="{{ url_for('routes_blueprint.summary', facility=data['facility']) }}">{{ data['facility'] }}</a></td>
+                    <td>{{ data['county'] }}</td>
+                    <td>{{ data['reg_date'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.jqueryui.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.jqueryui.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('#submissions').DataTable({
+    "ordering": false // false to disable sorting (or any other option)
+    });
+    $('.dataTables_length').addClass('bs-select');
+  });
+</script>
+{% endblock %}
