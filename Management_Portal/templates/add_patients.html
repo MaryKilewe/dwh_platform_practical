@@ -5,10 +5,10 @@
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4 text-white"></legend>
+            <legend class="border-bottom mb-4 "></legend>
             <div class="row">
-                <div class="form-group col-lg-6 col-md-6">
-                    {{ form.first_name.label(class="form-control-label text-white") }}
+                <div class="form-group col-lg-6 col-md-6 pb-3">
+                    {{ form.first_name.label(class="form-control-label ") }}
                     {% if form.first_name.errors %}
                         {{ form.first_name(class="form-control form-control-sm is-invalid") }}
                         <div class="invalid-feedback">
@@ -21,8 +21,8 @@
                     {% endif %}
                 </div>
 
-                <div class="form-group col-lg-6 col-md-6">
-                    {{ form.last_name.label(class="form-control-label text-white") }}
+                <div class="form-group col-lg-6 col-md-6 pb-3">
+                    {{ form.last_name.label(class="form-control-label ") }}
                     {% if form.last_name.errors %}
                         {{ form.last_name(class="form-control form-control-sm is-invalid") }}
                         <div class="invalid-feedback">
@@ -35,8 +35,8 @@
                     {% endif %}
                 </div>
 
-                <div class="form-group col-lg-6 col-md-6">
-                    {{ form.gender.label(class="form-control-label text-white") }}
+                <div class="form-group col-lg-6 col-md-6 pb-3">
+                    {{ form.gender.label(class="form-control-label ") }}
                     {% if form.gender.errors %}
                         {{ form.gender(class="form-control form-control-sm is-invalid") }}
                         <div class="invalid-feedback">
@@ -49,8 +49,8 @@
                     {% endif %}
                 </div>
 
-                <div class="form-group col-lg-6 col-md-6">
-                    {{ form.age.label(class="form-control-label text-white") }}
+                <div class="form-group col-lg-6 col-md-6 pb-3">
+                    {{ form.age.label(class="form-control-label ") }}
                     {% if form.age.errors %}
                         {{ form.age(class="form-control form-control-sm is-invalid") }}
                         <div class="invalid-feedback">
@@ -63,8 +63,8 @@
                     {% endif %}
                 </div>
 
-                <div class="form-group col-lg-6 col-md-6">
-                    {{ form.facility.label(class="form-control-label text-white") }}
+                <div class="form-group col-lg-6 col-md-6 pb-3">
+                    {{ form.facility.label(class="form-control-label ") }}
                     {% if form.facility.errors %}
                         {{ form.facility(class="form-control form-control-sm is-invalid") }}
                         <div class="invalid-feedback">
@@ -77,8 +77,8 @@
                     {% endif %}
                 </div>
 
-                <div class="form-group col-lg-6 col-md-6">
-                    {{ form.county.label(class="form-control-label text-white") }}
+                <div class="form-group col-lg-6 col-md-6 pb-3">
+                    {{ form.county.label(class="form-control-label ") }}
                     {% if form.county.errors %}
                         {{ form.county(class="form-control form-control-sm is-invalid") }}
                         <div class="invalid-feedback">
@@ -91,8 +91,8 @@
                     {% endif %}
                 </div>
 
-                <div class="form-group col-lg-6 col-md-6">
-                    {{ form.reg_date.label(class="form-control-label text-white") }}
+                <div class="form-group col-lg-6 col-md-6 pb-3">
+                    {{ form.reg_date.label(class="form-control-label ") }}
                     {% if form.reg_date.errors %}
                         {{ form.reg_date(class="form-control form-control-sm is-invalid") }}
                         <div class="invalid-feedback">
