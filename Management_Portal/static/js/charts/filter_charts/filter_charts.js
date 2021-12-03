@@ -1,3 +1,23 @@
+function clear_filters(){
+    event.preventDefault();
+    let filters = {
+            month: "",
+            year: "",
+            facility: "",
+            county: ""
+        };
+
+        // call function to post data to get filtered gender stats
+        postData_to_gender_filter(filters)
+
+        // call function to post data to get filtered age stats
+        postData_to_age_filter(filters)
+
+        // call function to post data to get filtered monthly registrations
+        postData_to_registrations_filter(filters)
+}
+
+
 $('#submit-filters').submit(function () {
         event.preventDefault();
 

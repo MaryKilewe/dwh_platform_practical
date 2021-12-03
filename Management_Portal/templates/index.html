@@ -1,97 +1,94 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1> Welcome to Management Portal</h1>
-    <br>
 
     <form method="POST" action="" id="submit-filters">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4 text-white">Filter</legend>
             <div class="row">
 
                 <div class="form-group col-lg-3 col-md-6">
                     {{ form.facility.label(class="form-control-label text-white") }}
                     {% if form.facility.errors %}
-                        {{ form.facility(class="form-control form-control-lg is-invalid") }}
+                        {{ form.facility(class="form-control form-control-sm is-invalid") }}
                         <div class="invalid-feedback">
                             {% for error in form.facility.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.facility(class="form-control form-control-lg") }}
+                        {{ form.facility(class="form-control form-control-sm") }}
                     {% endif %}
                 </div>
 
                 <div class="form-group col-lg-3 col-md-6">
                     {{ form.county.label(class="form-control-label text-white") }}
                     {% if form.county.errors %}
-                        {{ form.county(class="form-control form-control-lg is-invalid") }}
+                        {{ form.county(class="form-control form-control-sm is-invalid") }}
                         <div class="invalid-feedback">
                             {% for error in form.county.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.county(class="form-control form-control-lg") }}
+                        {{ form.county(class="form-control form-control-sm") }}
                     {% endif %}
                 </div>
 
                 <div class="form-group col-lg-3 col-md-6">
                     {{ form.month.label(class="form-control-label text-white") }}
                     {% if form.month.errors %}
-                        {{ form.month(class="form-control form-control-lg is-invalid") }}
+                        {{ form.month(class="form-control form-control-sm is-invalid") }}
                         <div class="invalid-feedback">
                             {% for error in form.month.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.month(class="form-control form-control-lg") }}
+                        {{ form.month(class="form-control form-control-sm") }}
                     {% endif %}
                 </div>
 
                 <div class="form-group col-lg-3 col-md-6">
                     {{ form.year.label(class="form-control-label text-white") }}
                     {% if form.year.errors %}
-                        {{ form.year(class="form-control form-control-lg is-invalid") }}
+                        {{ form.year(class="form-control form-control-sm is-invalid") }}
                         <div class="invalid-feedback">
                             {% for error in form.year.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.year(class="form-control form-control-lg") }}
+                        {{ form.year(class="form-control form-control-sm") }}
                     {% endif %}
                 </div>
             </div>
         </fieldset>
-        <div class="form-group">
-            {{ form.submit(class="btn btn-light py-2 px-5") }}
-            <a href="/index">Clear filters</a>
+        <div class="form-group pt-2">
+            {{ form.submit(class="btn btn-sm py-2 px-5 submit") }}
+            <a href="" onclick="clear_filters()">Clear filters</a>
         </div>
 
     </form>
 
 
-    <div class="row">
-        <div class=" text-left col-lg-4 col-md-6" style="margin: 0 auto; " id="gender_stats">
+    <div class="row" style="margin: 0 auto; ">
+        <div class="chart_div"  id="gender_stats">
             <h5 class="heading mb-sm-5 mb-4" id="gender_title">Gender <strong>Stats </strong></h5>
              <canvas id="genderPieChartContainer" style="height: 300px; width: 300px;"></canvas>
               <script src="{{ url_for('routes_blueprint.static', filename='js/charts/gender_chart.js') }}"> </script>
         </div>
 
-        <div class="col-lg-4 col-md-6">
-            <div class=" text-left" style="margin: 0 auto; " id="age_stats">
+        <div class="chart_div">
+            <div class=" text-left"  id="age_stats">
                 <h5 class="heading mb-sm-5 mb-4" title="age_title">Age <strong>Stats </strong></h5>
                  <canvas id="ageChartContainer" style="height: 400px; width: 100%;"></canvas>
                   <script src="{{ url_for('routes_blueprint.static', filename='js/charts/age_chart.js') }}"> </script>
             </div>
 		</div>
 
-        <div class="col-lg-4 col-md-6">
-            <div class=" text-left" style="margin: 0 auto; " id="monthly_reg_stats">
+        <div class="chart_div">
+            <div class=" text-left" id="monthly_reg_stats">
                 <h5 class="heading mb-sm-5 mb-4" title="monthly_reg_title">Monthly Registrations <strong>Stats </strong></h5>
                  <canvas id="monthly_reg_ChartContainer" style="height: 400px; width: 100%;"></canvas>
                   <script src="{{ url_for('routes_blueprint.static', filename='js/charts/monthly_reg_chart.js') }}"> </script>

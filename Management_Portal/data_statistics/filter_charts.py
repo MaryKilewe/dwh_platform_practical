@@ -10,11 +10,26 @@ def get_db_connection():
 
 def filter_genders(month, year, facility, county):
     # this route returns the genders of patients registered
-    print(month, facility, county, year, type(year))
+    if month == None:
+        search_month = ""
+    else:
+        search_month = "reg_month = \"" + month  + "\" AND"
+
+    if facility == None:
+        search_facility = ""
+    else:
+        search_facility = "facility = \"" + facility  + "\" AND"
+
+    if county == None:
+        search_county = ""
+    else:
+        search_county = "county = \"" + county + "\" AND"
+
+
     conn = get_db_connection()
-    #SELECT gender, COUNT(*) FROM patient_registration WHERE county = ? AND facility = ? AND strftime("%B", reg_date) = ?
-    gender_stats = conn.execute('SELECT gender, COUNT(*) FROM patient_registration WHERE county = ? AND facility = ? AND reg_month = ? AND reg_year = ? GROUP BY gender',
-                                [county, facility, month, year]).fetchall()
+    statement = "SELECT gender, COUNT(*) FROM patient_registration WHERE {} {} {} reg_year = {} GROUP BY gender".format(search_county, search_facility, search_month, str(year))
+    print(statement)
+    gender_stats = conn.execute(statement).fetchall()
     conn.close()
 
     # format query results for the chart
@@ -27,11 +42,25 @@ def filter_genders(month, year, facility, county):
 
 def filter_ages(month, year, facility, county):
     # this route returns the genders of patients registered
-    print(month, facility, county, year, type(year))
+    if month == None:
+        search_month = ""
+    else:
+        search_month = "reg_month = \"" + month + "\" AND"
+
+    if facility == None:
+        search_facility = ""
+    else:
+        search_facility = "facility = \"" + facility + "\" AND"
+
+    if county == None:
+        search_county = ""
+    else:
+        search_county = "county = \"" + county + "\" AND"
+
     conn = get_db_connection()
-    #SELECT gender, COUNT(*) FROM patient_registration WHERE county = ? AND facility = ? AND strftime("%B", reg_date) = ?
-    filtered_age_stats = conn.execute('SELECT id, age FROM patient_registration WHERE county = ? AND facility = ? AND reg_month = ? AND reg_year = ?',
-                                [county, facility, month, year]).fetchall()
+    statement = "SELECT id, age FROM patient_registration WHERE {} {} {} reg_year = {}".format(
+        search_county, search_facility, search_month, str(year))
+    filtered_age_stats = conn.execute(statement).fetchall()
     conn.close()
 
     # format query results for the chart
@@ -65,10 +94,25 @@ def count_range_in_list(li, min, max):
 
 def filter_registrations(month, year, facility, county):
     # this route returns the filtered of monthly registrations
+    if month == None:
+        search_month = ""
+    else:
+        search_month = "reg_month = \"" + month + "\" AND"
+
+    if facility == None:
+        search_facility = ""
+    else:
+        search_facility = "facility = \"" + facility + "\" AND"
+
+    if county == None:
+        search_county = ""
+    else:
+        search_county = "county = \"" + county + "\" AND"
 
     conn = get_db_connection()
-    filtered_reg_stats = conn.execute('SELECT reg_month, COUNT(*) FROM patient_registration WHERE county = ? AND facility = ? AND reg_month = ? AND reg_year = ? GROUP BY reg_month',
-                                [county, facility, month, year]).fetchall()
+    statement = "SELECT reg_month, COUNT(*) FROM patient_registration WHERE {} {} {} reg_year = {} GROUP BY reg_month".format(
+        search_county, search_facility, search_month, str(year))
+    filtered_reg_stats = conn.execute(statement).fetchall()
     conn.close()
 
     # format query results for the chart

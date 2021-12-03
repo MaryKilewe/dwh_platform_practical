@@ -1,5 +1,10 @@
-body{
-    padding:50px
+.content{
+    padding:50px;
+    background-color:#efeefa
+}
+
+p,label, option{
+    font-size: 1em !important;
 }
 
 .post {
@@ -8,9 +13,41 @@ body{
     background-color: #f3f3f3
 }
 
+header {
+    background-color:white;
+    height: 80px;
+   }
+
 nav a {
     color: #d64161;
     font-size: 1em;
     margin-left: 50px;
     text-decoration: none;
+}
+
+.chart_div{
+    background-color:white;
+    margin: 10px;
+    width:350px;
+    padding:10px;
+    border: 1px solid #d1cef2;
+    border-radius:5px
+}
+
+form{
+    background-color:white;
+    border: 1px solid #d1cef2;
+    border-radius:5px;
+    padding:15px
+}
+
+table{
+    background-color:white;
+    border: 1px solid #d1cef2;
+    border-radius:5px;
+}
+
+.submit{
+    background-color:#d64161;
+    color:white
 }

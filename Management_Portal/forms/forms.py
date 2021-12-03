@@ -24,6 +24,6 @@ class FilterForm(FlaskForm):
     facility = SelectField('Health Facilities')
     county = SelectField('County', choices=[])
     month = SelectField('Month')
-    year = SelectField('Year')
+    year = SelectField('Year', default=2021)
 
     submit = SubmitField('Filter')

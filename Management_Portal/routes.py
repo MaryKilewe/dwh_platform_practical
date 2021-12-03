@@ -30,10 +30,10 @@ def index():
     facilities = conn.execute('SELECT facility FROM patient_registration GROUP BY facility ORDER BY facility ASC').fetchall()
     conn.close()
 
-    form.county.choices = [(query[1], query[1]) for query in counties]
-    form.facility.choices = [(query[0], query[0]) for query in facilities]
+    form.county.choices = [("", "Show For All")] + [(query[1], query[1]) for query in counties]
+    form.facility.choices = [("", "Show For All")] + [(query[0], query[0]) for query in facilities]
     months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    form.month.choices = [(month, month) for month in months]
+    form.month.choices = [("", "Show For All")] + [(month, month) for month in months]
     form.year.choices = [(year, year) for year in range(2020, 2100)]
 
     return render_template('index.html', form=form)

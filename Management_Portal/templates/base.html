@@ -22,13 +22,15 @@
 
 </head>
 <body>
-    <nav>
-        <a href="{{ url_for('routes_blueprint.index') }}">Patient Management Portal</a>
-        <a href="{{ url_for('routes_blueprint.add_patients') }}" >Add patients</a>
-        <a href="{{ url_for('routes_blueprint.submissions') }}" >View submissions</a>
-        <a href="{{ url_for('routes_blueprint.submissions') }}" >Facilities</a>
-    </nav>
-    <hr>
+    <header class="d-flex align-items-center">
+        <nav>
+            <a href="{{ url_for('routes_blueprint.index') }}">Patient Management Portal</a>
+            <a href="{{ url_for('routes_blueprint.add_patients') }}" >Add patients</a>
+            <a href="{{ url_for('routes_blueprint.submissions') }}" >View submissions</a>
+        </nav>
+    </header>
+
+
     <div class="content">
         {% block content %} {% endblock %}
     </div>
