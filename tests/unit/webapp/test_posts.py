@@ -22,3 +22,4 @@ def test_add_patients(client):
 
     response = client.post("/add_patients", data=json.dumps(mock_request_data), headers=mock_request_headers)
     assert response.status_code == 200
+

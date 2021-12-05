@@ -22,9 +22,10 @@ def get_db_connection():
 @statistics_blueprint.route("/get_gender_statistics", methods=["GET"])
 def get_gender_statistics():
     # this route returns the genders of candidates
+    currentYear = datetime.now().year
 
     conn = get_db_connection()
-    gender_stats = conn.execute('SELECT gender, COUNT(*) FROM patient_registration GROUP BY gender').fetchall()
+    gender_stats = conn.execute('SELECT gender, COUNT(*) FROM patient_registration WHERE reg_year= ? GROUP BY gender', [currentYear]).fetchall()
     conn.close()
 
     # format query results for the chart
@@ -37,8 +38,10 @@ def get_gender_statistics():
 
 @statistics_blueprint.route('/gender_filter', methods=['POST'])
 def gender_filter():
+    currentYear = datetime.now().year
+
     month = request.get_json()['month'] if request.get_json()['month'] != '' else None
-    year = request.get_json()['year'] if request.get_json()['year'] != '' else None
+    year = request.get_json()['year'] if request.get_json()['year'] != '' else currentYear
     facility = request.get_json()['facility'] if request.get_json()['facility'] != '' else None
     county = request.get_json()['county'] if request.get_json()['county'] != '' else None
 
@@ -50,9 +53,10 @@ def gender_filter():
 @statistics_blueprint.route("/get_age_statistics", methods=["GET"])
 def get_age_statistics():
     # this route returns the age ranges of patients
+    currentYear = datetime.now().year
 
     conn = get_db_connection()
-    age_stats = conn.execute('SELECT id, age FROM patient_registration').fetchall()
+    age_stats = conn.execute('SELECT id, age FROM patient_registration where reg_year=?', [currentYear]).fetchall()
     conn.close()
 
     # format query results for the chart
@@ -86,8 +90,10 @@ def count_range_in_list(li, min, max):
 
 @statistics_blueprint.route('/age_filter', methods=['POST'])
 def age_filter():
+    currentYear = datetime.now().year
+
     month = request.get_json()['month'] if request.get_json()['month'] != '' else None
-    year = request.get_json()['year'] if request.get_json()['year'] != '' else None
+    year = request.get_json()['year'] if request.get_json()['year'] != '' else currentYear
     facility = request.get_json()['facility'] if request.get_json()['facility'] != '' else None
     county = request.get_json()['county'] if request.get_json()['county'] != '' else None
 
@@ -99,9 +105,10 @@ def age_filter():
 @statistics_blueprint.route("/monthly_reg_stats", methods=["GET"])
 def monthly_reg_stats():
     # this route returns monthly registrations
+    currentYear = datetime.now().year
 
     conn = get_db_connection()
-    reg_stats = conn.execute('SELECT reg_month, COUNT(*) FROM patient_registration WHERE reg_year = "2021" GROUP BY reg_month').fetchall()
+    reg_stats = conn.execute('SELECT reg_month, COUNT(*) FROM patient_registration WHERE reg_year = ? GROUP BY reg_month', [currentYear]).fetchall()
     conn.close()
 
     # format query results for the chart
@@ -135,9 +142,11 @@ def monthly_reg_stats():
 
 @statistics_blueprint.route('/monthly_reg_filter', methods=['POST'])
 def monthly_reg_filter():
+    currentYear = datetime.now().year
+
     month = request.get_json()['month'] if request.get_json()['month'] != '' else None
     # if no year is given, fetch results for the current year
-    year = request.get_json()['year'] if request.get_json()['year'] != '' else "2021"
+    year = request.get_json()['year'] if request.get_json()['year'] != '' else currentYear
     facility = request.get_json()['facility'] if request.get_json()['facility'] != '' else None
     county = request.get_json()['county'] if request.get_json()['county'] != '' else None
 

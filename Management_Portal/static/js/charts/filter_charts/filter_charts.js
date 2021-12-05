@@ -2,7 +2,7 @@ function clear_filters(){
     event.preventDefault();
     let filters = {
             month: "",
-            year: "",
+            year: new Date().getFullYear(),
             facility: "",
             county: ""
         };
@@ -54,7 +54,7 @@ function postData_to_gender_filter(filters){
             //$("#gender_title").remove();
             //document.getElementById("genderPieChartContainer").remove();
             $( "#gender_stats" ).empty();
-            title = $('<h5 class="heading mb-sm-5 mb-4" id="gender_title">Gender <strong>Stats </strong></h5>' );
+            title = $('<h5 class="heading mb-sm-5 mb-4" id="gender_title"><strong>Gender Stats </strong> - '+filters["year"]+'</h5>' );
             $('#gender_stats').append(title);
 
 
@@ -115,7 +115,7 @@ function postData_to_age_filter(filters){
             //document.getElementById("age_title").remove();
             //document.getElementById("ageChartContainer").remove();
             $( "#age_stats" ).empty();
-            title = $('<h5 class="heading mb-sm-5 mb-4" id="age_title">Age <strong>Stats </strong></h5>' );
+            title = $('<h5 class="heading mb-sm-5 mb-4" id="age_title"><strong>Age Stats </strong> - '+filters["year"]+'</h5>' );
             filteredagePieChartContainer = $('<canvas id="ageChartContainer" style="height: 300px; width: 300px;"></canvas>' );
             $('#age_stats').append(title);
             $('#age_stats').append(filteredagePieChartContainer);
@@ -202,7 +202,7 @@ function postData_to_registrations_filter(filters){
             //document.getElementById("monthly_reg_title").remove();
             //document.getElementById("monthly_reg_ChartContainer").remove();
             $( "#monthly_reg_stats" ).empty();
-            title = $('<h5 class="heading mb-sm-5 mb-4" id="monthly_reg_title">Monthly Registrations <strong>Stats </strong></h5>' );
+            title = $('<h5 class="heading mb-sm-5 mb-4" id="monthly_reg_title"><strong>Monthly Registrations Stats </strong> - '+filters["year"]+'</h5>' );
             filteredregPieChartContainer = $('<canvas id="monthly_reg_ChartContainer" style="height: 300px; width: 300px;"></canvas>' );
             $('#monthly_reg_stats').append(title);
             $('#monthly_reg_stats').append(filteredregPieChartContainer);

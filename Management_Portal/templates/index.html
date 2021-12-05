@@ -74,14 +74,14 @@
 
     <div class="row" style="margin: 0 auto; ">
         <div class="chart_div"  id="gender_stats">
-            <h5 class="heading mb-sm-5 mb-4" id="gender_title">Gender <strong>Stats </strong></h5>
+            <h5 class="heading mb-sm-5 mb-4" id="gender_title"><strong>Gender Stats </strong> - <span class="year"></span></h5>
              <canvas id="genderPieChartContainer" style="height: 300px; width: 300px;"></canvas>
               <script src="{{ url_for('routes_blueprint.static', filename='js/charts/gender_chart.js') }}"> </script>
         </div>
 
         <div class="chart_div">
             <div class=" text-left"  id="age_stats">
-                <h5 class="heading mb-sm-5 mb-4" title="age_title">Age <strong>Stats </strong></h5>
+                <h5 class="heading mb-sm-5 mb-4" title="age_title"><strong>Age Stats </strong> - <span class="year"></h5>
                  <canvas id="ageChartContainer" style="height: 400px; width: 100%;"></canvas>
                   <script src="{{ url_for('routes_blueprint.static', filename='js/charts/age_chart.js') }}"> </script>
             </div>
@@ -89,7 +89,7 @@
 
         <div class="chart_div">
             <div class=" text-left" id="monthly_reg_stats">
-                <h5 class="heading mb-sm-5 mb-4" title="monthly_reg_title">Monthly Registrations <strong>Stats </strong></h5>
+                <h5 class="heading mb-sm-5 mb-4" title="monthly_reg_title"><strong>Monthly Registrations Stats - </strong><span class="year"></span></h5>
                  <canvas id="monthly_reg_ChartContainer" style="height: 400px; width: 100%;"></canvas>
                   <script src="{{ url_for('routes_blueprint.static', filename='js/charts/monthly_reg_chart.js') }}"> </script>
             </div>
@@ -98,6 +98,10 @@
 
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
         <script src="{{ url_for('routes_blueprint.static', filename='js/charts/filter_charts/filter_charts.js') }}"> </script>
+        <script>
+            currentyear =new Date().getFullYear()
+            $(".year").text(currentyear)
+        </script>
 
 
 {% endblock %}
